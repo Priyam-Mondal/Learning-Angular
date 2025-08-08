@@ -1,0 +1,275 @@
+<h1>Angular App</h1>
+
+<div>
+  <h2>Counter App</h2>
+  <h3>{{ count }}</h3>
+  <div>
+    <button (click)="handleCounter('+')" style="margin-right: 10px">+</button>
+    <button (click)="handleCounter('-')" style="margin-right: 10px">-</button>
+    <button (click)="handleCounter('reset')">Reset</button>
+  </div>
+</div>
+
+<div>
+  <h2>Events in Angular</h2>
+  <button (click)="handleClick($event)">Click me</button>
+  <div
+    (mouseenter)="handleEvent($event)"
+    style="background-color: green; width: 100px; height: 100px"
+  ></div>
+
+  <div
+    (mouseleave)="handleEvent($event)"
+    style="background-color: blue; width: 100px; height: 100px"
+  ></div>
+  <input
+    type="text"
+    (focus)="handleEvent($event)"
+    (blur)="handleEvent($event)"
+    (input)="handleEvent($event)"
+    name="user"
+  />
+</div>
+<hr />
+<div>
+  <h3>Username:{{ name }}</h3>
+  <input (input)="getName($event)" type="text" placeholder="username" />
+  <br />
+  <button>Get</button><br />
+  <h3>Email:{{ email }}</h3>
+  <input
+    type="text"
+    value="{{ email }}"
+    placeholder="Enter email"
+    #emailField
+  />
+  <button (click)="getEmail(emailField.value)">Get Email</button>
+  <button (click)="setEmail()">Set Email</button>
+</div>
+<hr />
+<div>
+  <h2>Control FLow</h2>
+  <button (click)="toggle()">Toggle Div</button>
+
+  @if(display){
+  <div style="width: 200px; height: 200px; background-color: green"></div>
+  }
+  <br />
+  <button (click)="handleColor(1)">Red</button>
+  <button (click)="handleColor(2)">Blue</button>
+  <button (click)="handleColor(3)">Green</button>
+  <input type="text" (input)="handleColorInput($event)" />
+  @if(color ==1){
+  <div style="background-color: red; width: 100px; height: 100px"></div>
+  }@else if(color==2){
+  <div style="background-color: blue; width: 100px; height: 100px"></div>
+  }@else if(color==3){
+  <div style="background-color: green; width: 100px; height: 100px"></div>
+  }@else{
+  <div style="background-color: black; width: 100px; height: 100px"></div>
+  }
+</div>
+
+<hr />
+
+<div>
+  @for(student of students; track student.name; let id=$index){
+  <h2>
+    <span>{{ id }}</span>
+    <span>{{ student.name }}</span>
+    <span>{{ student.name }}</span>
+    <span>{{ student.age }}</span>
+    <span>{{ student.email }}</span>
+    <button (click)="getStudent(student.name)">Get Name</button>
+  </h2>
+  }
+</div>
+
+<hr />
+
+<div>
+  <h3>Signal value: {{ c() }}</h3>
+  <button (click)="updateSignal()">Update Signal</button>
+</div>
+<hr />
+<div>
+  <h3>Computed Signal</h3>
+  <button (click)="show()">Show</button>
+</div>
+<hr />
+<div>
+  <h3>Contextual variables</h3>
+  @for(user of users; track user){
+  <!-- @if($first || $last){
+  <h4 style="background-color: red">{{ $index }} : {{ user }}</h4>
+  } @else{
+  <h4>{{ $index }} : {{ user }}</h4>
+  }  -->
+  @if($odd){
+  <h4 style="background-color: rgb(183, 255, 0)">{{ $index }} : {{ user }}</h4>
+  }@else{
+  <h4 style="background-color: rgb(248, 224, 0)">{{ $index }} : {{ user }}</h4>
+  }
+  <h4>Count: {{ $count }}</h4>
+  }@empty(){
+  <h4>No results</h4>
+  }
+</div>
+
+<hr />
+<div>
+  <h3>Two way binding</h3>
+  <input [(ngModel)]="tb1" type="text" />
+  <h4>Name: {{ tb1 }}</h4>
+</div>
+
+<hr />
+<div>
+  <h2>Todo List</h2>
+  <app-todo></app-todo>
+</div>
+<hr />
+<div>
+  <h3>Dynamic Style</h3>
+  <h4 [style.backgroundColor]="color1" [style.fontSize.px]="fontsize">
+    Demo text
+  </h4>
+  <h4 [style.fontSize]="big ? headingSizeBig : headingSizeSmall">
+    lorem ipsum dadj dajkdjad- ejfdef
+  </h4>
+</div>
+<hr />
+<div>
+  <h3>Directives</h3>
+  <span>
+    Directive is a class that adds additional behavior to elements in your
+    application. A feature in angular that help you to provide more power to DOM
+    elements . 3 types of directives : Componenet, Structural(ngIf, ngFor),
+    Attribute(ngStyle, ngClass)</span
+  >
+</div>
+<hr />
+<div>
+  <h3>ngFor</h3>
+  <ul>
+    <li *ngFor="let x of users">{{ x }}</li>
+  </ul>
+  <div>
+    <h3>nested loops using ngFor</h3>
+    <div *ngFor="let category of categories">
+      <h3>{{ category.name }}</h3>
+      <ul>
+        <li *ngFor="let item of category.items">
+          {{ item }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr />
+<div>
+  <h3>ngIf</h3>
+  <div>
+    <div *ngIf="status === 'loading'; else notLoading">
+      <p>Loading, please wait...</p>
+    </div>
+
+    <ng-template #notLoading>
+      <div *ngIf="status === 'success'; else errorBlock">
+        <p>Data loaded successfully!</p>
+      </div>
+    </ng-template>
+
+    <ng-template #errorBlock>
+      <p>Something went wrong. Please try again.</p>
+    </ng-template>
+  </div>
+</div>
+
+<hr />
+
+<div>
+  <h3>ngSwitch</h3>
+  <div [ngSwitch]="selectedColor">
+    <p *ngSwitchCase="'red'">You selected Red!</p>
+    <p *ngSwitchCase="'blue'">You selected Blue!</p>
+    <p *ngSwitchCase="'green'">You selected Green!</p>
+    <p *ngSwitchDefault>Unknown color selected.</p>
+  </div>
+</div>
+<hr />
+<div>
+  <h3>Basic Routing</h3>
+  <app-header></app-header>
+  <router-outlet></router-outlet>
+</div>
+
+<hr />
+
+<div>
+  <h3>Dynamic Routing</h3>
+  <div>
+    <h4>User List</h4>
+    @for(s of students; track s.id){
+    <li>
+      <a routerLink="user/{{ s.id }}/{{ s.name }}">{{ s.name }}</a>
+    </li>
+    }
+  </div>
+</div>
+<hr />
+<div>
+  <h3>Basic Reactive Forms & Form Groupping</h3>
+  <app-reactiveform01></app-reactiveform01>
+</div>
+
+<hr />
+<div>
+  <h3>Template Driven Form</h3>
+  <app-templatedrivenform></app-templatedrivenform>
+</div>
+
+<hr />
+<div>
+  <h3>Data passing from parent to child</h3>
+  <h3>Using user component as child</h3>
+  <select #selectedUser (change)="onUserChange(selectedUser.value)">
+    <option value="Peter">Peter</option>
+    <option value="Tomy">Tomy</option>
+  </select>
+  <app-user [user1]="user1" [user2]="user2"></app-user>
+</div>
+
+<hr />
+<div>
+  <h3>Passing data from child to parent</h3>
+  <h4>user2 component is child and app component is parent</h4>
+  <app-user2 (getUsers)="handleChildData($event)"></app-user2>
+</div>
+<hr />
+<div>
+  <h3>custom pipes</h3>
+  <h4>{{ amount | currencyConverter : 12 }}</h4>
+</div>
+
+<hr />
+<div>
+  <h3>Life Cycle</h3>
+  <button (click)="updateCounter2()">Count: {{ counter2 }}</button>
+  <div *ngIf="counter2 != 5">
+    <app-lifecycle [counter]="counter2" #lcComponent></app-lifecycle>
+  </div>
+</div>
+<hr>
+<div>
+  <h3>Services</h3>
+  <button (click)="getProductData()">Load product data</button>
+</div>
+
+<hr>
+<div>
+  <h3>Lazy Loading( component name used for demo is lazyloading) </h3>
+  <h4>check app.route.ts</h4>
+  <a routerLink="/lazyloading">Lazy loading</a>
+  <app-lazyloading></app-lazyloading>
+</div>

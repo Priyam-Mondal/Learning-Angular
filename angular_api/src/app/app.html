@@ -1,0 +1,50 @@
+<div>
+  <h2>User Form</h2>
+  <form (ngSubmit)="onSubmit()">
+    <input
+      type="text"
+      placeholder="Name"
+      name="name"
+      [(ngModel)]="selectedUser.name"
+      required
+      #name="ngModel"
+    />
+    <br /><br />
+    <input
+      type="email"
+      placeholder="Email"
+      name="email"
+      [(ngModel)]="selectedUser.email"
+      required
+      #email="ngModel"
+    />
+    <br /><br />
+    <input
+      type="number"
+      placeholder="Age"
+      name="age"
+      [(ngModel)]="selectedUser.age"
+      required
+      #age="ngModel"
+    />
+    <br /><br />
+    <button type="submit">
+      {{ selectedUser.id ? 'Update User' : 'Add User' }}
+    </button>
+    <button type="button" (click)="resetForm()">Clear</button>
+  </form>
+
+  <hr />
+
+  <h2>User List</h2>
+  <div *ngFor="let user of users">
+    <ul>
+      <li><strong>Name:</strong> {{ user.name }}</li>
+      <li><strong>Email:</strong> {{ user.email }}</li>
+      <li><strong>Age:</strong> {{ user.age }}</li>
+    </ul>
+    <button (click)="editUser(user)">Edit</button>
+    <button (click)="deleteUser(user.id)">Delete</button>
+    <hr />
+  </div>
+</div>

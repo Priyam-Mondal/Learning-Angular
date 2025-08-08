@@ -1,0 +1,29 @@
+<div>
+  <form action="" method="post">
+    <input type="text" placeholder="enter name" [formControl]="name1" />
+    <br /><br />
+    <input type="text" placeholder="enter password" [formControl]="password1" />
+    <br /><br />
+    <button>Login</button>
+  </form>
+</div>
+<div>
+  <h4>form groupping & validation</h4>
+  <form action="" [formGroup]="profileGroup" (ngSubmit)="onSubmit()">
+    <input type="text" placeholder="enter name" formControlName="name" />
+    <span *ngIf="name?.hasError('required')">Name is required</span>
+    <span *ngIf="name?.invalid && (name?.dirty || name?.touched)"
+      >Please enter names</span
+    >
+    <br /><br />
+    <input
+      type="text"
+      placeholder="enter password"
+      formControlName="password"
+    />
+    <br /><br />
+    <input type="text" placeholder="enter email" formControlName="email" />
+    <br /><br />
+    <button>Submit</button>
+  </form>
+</div>

@@ -1,0 +1,14 @@
+<div>
+  <input [(ngModel)]="task" type="text" />
+  <button (click)="addTask()">Add Task</button>
+
+  @for(task of taskList; track task.id){
+  <ul
+    style="display: flex; justify-content: space-between; list-style-type: none"
+  >
+    <li>{{ task.id }}</li>
+    <li>{{ task.task }}</li>
+    <li><button (click)="deleteTask(task.id)">Delete</button></li>
+  </ul>
+  }
+</div>

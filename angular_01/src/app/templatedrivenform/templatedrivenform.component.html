@@ -1,0 +1,68 @@
+<div>
+  <form #userForm="ngForm" (ngSubmit)="addDetails(userForm.value)" action="">
+    <input
+      #name="ngModel"
+      type="text"
+      placeholder="enter name"
+      name="name"
+      ngModel
+      required
+    />
+    <span *ngIf="name.invalid && name.touched">Name is required</span>
+    <br />
+    <br />
+    <input
+      #email="ngModel"
+      type="email"
+      email
+      required
+      placeholder="enter email"
+      name="email"
+      ngModel
+    />
+    <span *ngIf="email.invalid && email.touched">email is required</span>
+    <br />
+    <br />
+    <input
+      #password="ngModel"
+      type="text"
+      required
+      minlength="5"
+      maxlength="10"
+      placeholder="enter password"
+      name="password"
+      ngModel
+    />
+    <span *ngIf="password.invalid && password.touched"
+      >Enter valid password</span
+    >
+    <br />
+    <br />
+    <select #gender="ngModel" required name="gender" id="" ngModel>
+      <option value="">Select Gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+    <span *ngIf="gender.invalid && gender.touched"
+      >Invalid gender</span
+    >
+    <br /><br />
+    <input
+      #address="ngModel"
+      type="text"
+      required
+      pattern="[a-zA-Z0-9\s]+"
+      placeholder="enter address"
+      name="address"
+      ngModel
+    />
+    <br /><br />
+    <input type="range" min="0" max="20" name="range" ngModel />
+    <br /><br />
+    <button [disabled]="userForm.invalid">Add User</button>
+  </form>
+</div>
+<h4>{{ userDetails?.name }}</h4>
+<h4>{{ userDetails?.password }}</h4>
+<h4>{{ userDetails?.gender }}</h4>
+<h4>{{ userDetails?.range }}</h4>

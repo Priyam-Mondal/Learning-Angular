@@ -1,0 +1,18 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 20px;
+}
+ul {
+  display: flex;
+  list-style-type: none;
+  width: 200px;
+  justify-content: space-between;
+  margin-right: 30px;
+}
+ul li a {
+  text-decoration: none;
+}
+.active {
+  background-color: orange;
+}
