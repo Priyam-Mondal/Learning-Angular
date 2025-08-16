@@ -3,3 +3,10 @@
 <div>
     <input type="text" #search>
 </div>
+
+<div>
+    <div *ngFor="let u of users" style="display: flex; margin: 10px;">
+        <img [src]="u.avatar_url" alt="" />
+        <h4>{{u.login}}</h4>
+    </div>
+</div>
