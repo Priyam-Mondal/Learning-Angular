@@ -1,0 +1,75 @@
+Leaning Angular Topics 
+
+--------- 
+
+Template, templateUrl 
+Style, styleUrls 
+preserveWhiteSpaces
+encapsulatio (Emulated, None, ShadowDom)
+parent to child communication with metadata
+Child to parent Communication With metadata
+directives (components, structural, attribute)
+data binding (one way, two way)
+one way data binding (interpolation, property binding, style binding, class binding, attribute binding, event binding)
+two way data binding
+attribute binding
+class binding
+property binding
+interpolation vs Property binding
+event binding
+two-way data binding
+pipes (built-in, decimal, percent, currency, date, parameterized, chaining, custom)
+service
+Injectable
+singleton component
+tree shaking
+routing
+    - route configuration
+    - set page title using router
+    - wildcard route
+    - set base url
+    - named and multiple router outlets
+    - route guards
+    - auth guard
+    - router link active
+session management
+cookies
+forms
+    - template driven forms with validations
+    - reactive forms with validations
+    - get value & reset
+    - set value & patch
+    - value changes & status changes
+    - FormArray in reactive form
+    - nested form
+angular 19 updates
+    - standalone components
+    = fast booting 
+custom component
+simple counter app in angular
+signals
+    - features and when to use
+    - computable signals
+    - writable signals
+    - effects
+why template driven form exist when reactive form more flexible and powewrfull
+
+****************************************
+Topics to Learn for Async Communication in Angular
+*****************************************
+
+1. JavaScript & TypeScript Foundations
+    - Event loop & async basics → callbacks, microtasks, macrotasks
+    - Promises → then, catch, finally, async/await
+    - Fetch vs HttpClient (how Angular improves async HTTP)
+
+2. RxJS (Core for Angular Async)
+    - Observable basics → creation, subscription, unsubscription.
+    - Hot vs Cold observables.
+    - Subjects & Variants:
+        - Subject, BehaviorSubject, ReplaySubject, AsyncSubject.
+    - Common operators:
+        - Transformation: map, switchMap, mergeMap, concatMap, exhaustMap.
+        - Filtering: filter, take, takeUntil, debounceTime, distinctUntilChanged.
+        - Combination: combineLatest, forkJoin, withLatestFrom.
+        - Error handling: catchError, retry, retryWhen.
